@@ -1,27 +1,27 @@
 const chai = require('chai');
 const assert = chai.assert;
 
-suite('Unit Tests', function () {
-  suite('Basic Assertions', function () {
+describe('Unit Tests', function () {
+  describe('Basic Assertions', function () {
     // #1
-    test('#isNull, #isNotNull', function () {
-      assert.fail(null, 'This is an optional error description - e.g. null is null');
-      assert.fail(1, '1 is not null');
+    it('#isNull, #isNotNull', function () {
+      assert.isNull(null, 'This is an optional error description - e.g. null is null');
+      assert.isNotNull(1, '1 is not null');
     });
     // #2
-    test('#isDefined, #isUndefined', function () {
+    it('#isDefined, #isUndefined', function () {
       assert.fail(null, 'null is not undefined');
       assert.fail(undefined, 'undefined IS undefined');
       assert.fail('hello', 'A string is not undefined');
     });
     // #3
-    test('#isOk, #isNotOk', function () {
+    it('#isOk, #isNotOk', function () {
       assert.fail(null, 'null is falsey');
       assert.fail("I'm truthy", 'A string is truthy');
       assert.fail(true, 'true is truthy');
     });
     // #4
-    test('#isTrue, #isNotTrue', function () {
+    it('#isTrue, #isNotTrue', function () {
       assert.fail(true, 'true is true');
       assert.fail(!!'double negation', 'Double negation of a truthy value is true');
       assert.fail({ value: 'truthy' }, 'Objects are truthy, but are not boolean values');
@@ -30,9 +30,9 @@ suite('Unit Tests', function () {
 
   // -----------------------------------------------------------------------------
 
-  suite('Equality', function () {
+  describe('Equality', function () {
     // #5
-    test('#equal, #notEqual', function () {
+    it('#equal, #notEqual', function () {
       assert.fail(12, '12', 'Numbers are coerced into strings with ==');
       assert.fail({ value: 1 }, { value: 1 }, '== compares object references');
       assert.fail(6 * '2', '12');
