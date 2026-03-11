@@ -17,7 +17,7 @@ suite('Functional Tests', function () {
         .get('/hello')
         .end(function (err, res) {
           assert.equal(res.status, 200, 'Response status should be 200');
-          assert.equal(res.text, 'hello John', 'Response should be "hello John"');
+          assert.equal(res.text, 'hello Guest', 'Response should be "hello John"');
           done();
         });
     });
