@@ -19,7 +19,6 @@ app.get('/hello', function (req, res) {
   res.type('txt').send('hello ' + name);
 })
 
-
 const travellers = function (req, res) {
   let data = {};
   if (req.body && req.body.surname) {
@@ -55,19 +54,9 @@ const travellers = function (req, res) {
         break;
       default:
         data = {
-          name: 'unknown',
-          surname: '',
-          dates: ''
+          name: 'unknown'
         }
     }
-  }
-  // If request is from a browser form (not AJAX), render HTML for Zombie.js
-  if (req.headers['content-type'] && req.headers['content-type'].includes('application/x-www-form-urlencoded')) {
-    return res.send(`
-      <p>first name: <span id="name">${data.name || ''}</span></p>
-      <p>last name: <span id="surname">${data.surname || ''}</span></p>
-      <p>dates: <span id="dates">${data.dates || ''}</span></p>
-    `);
   }
   res.json(data);
 };
