@@ -94,6 +94,10 @@ const browser = new Browser();
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
 
+  suiteSetup(function(done) {
+    return browser.visit('/', done);
+  });
+
   suite('Headless browser', function () {
     test('should have a working "site" property', function() {
       assert.isNotNull(browser.site);
@@ -103,7 +107,7 @@ suite('Functional Tests with Zombie.js', function () {
   suite('"Famous Italian Explorers" form', function () {
     // #5
     test('submit "surname" : "Colombo" - write your e2e test...', function(done) {
-      browser.fill('surname', 'Colombo').pressButton('submit', () => {
+      browser.fill('surname', 'Colombo').pressButton('submit', function() {
         browser.assert.success();
         browser.assert.text('span#name', 'Cristoforo');
         browser.assert.text('span#surname', 'Colombo');
@@ -113,7 +117,7 @@ suite('Functional Tests with Zombie.js', function () {
     });
     // #6
     test('submit "surname" : "Vespucci" - write your e2e test...', function(done) {
-      browser.fill('surname', 'Vespucci').pressButton('submit', () => {
+      browser.fill('surname', 'Vespucci').pressButton('submit', function() {
         browser.assert.success();
         browser.assert.text('span#name', 'Amerigo');
         browser.assert.text('span#surname', 'Vespucci');
